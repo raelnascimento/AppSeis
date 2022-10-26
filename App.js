@@ -1,100 +1,21 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
-
-import { useForm, Controller } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup'
-
-const schema = yup.object({
-  username: yup.string().required("Informe seu username"),
-  email: yup.string().email("Email Invalido").required("Informe seu email"),
-  password: yup.string().min(6, "A senha deve ter pelo menos 6 digitos").required("Informe sua senha")
-})
-
+import { StyleSheet, Text, View, Image, ImageBackground, TouchableOpacity } from 'react-native';
 
 export default function App() {
-  const { control, handleSubmit, formState: { errors } } = useForm({
-    resolver: yupResolver(schema)
-  })
-
-  function handleSingIn(data) {
-    console.log(data)
-  }
-
-
 
   return (
     <View style={styles.container}>
+      <ImageBackground source={{ uri: 'https://images.pexels.com/photos/5025517/pexels-photo-5025517.jpeg?auto=compress&cs=tinysrgb&w=1600' }} style={styles.imageBackground}>
 
-      <Text style={styles.title}>Bem-vindo(a)</Text>
 
-      <Controller
-        control={control}
-        name="username"
-        render={({ field: { onChange, onBlur, value } }) => (
-          <TextInput
-            style={[
-              styles.input, {
-                borderWidth: errors.username && 1,
-                borderColor: errors.username && '#ff375b'
-              }
-            ]}
-            onChangeText={onChange}
-            onBlur={onBlur} //chamado quando o textinput é tocado
-            value={value}
-            placeholder="Seu username"
-          />
-        )}
-      />
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}> LOGIN </Text>
+        </TouchableOpacity>
 
-      {errors.username && <Text style={styles.labelError}>{errors.username?.message}</Text>}
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}> CADASTRO </Text>
+        </TouchableOpacity>
 
-      <Controller
-        control={control}
-        name="email"
-        render={({ field: { onChange, onBlur, value } }) => (
-          <TextInput
-            style={[
-              styles.input, {
-                borderWidth: errors.email && 1,
-                borderColor: errors.email && '#ff375b'
-              }
-            ]}
-            onChangeText={onChange}
-            onBlur={onBlur} //chamado quando o textinput é tocado
-            value={value}
-            placeholder="Digite seu email"
-          />
-        )}
-      />
-
-      {errors.email && <Text style={styles.labelError}>{errors.email?.message}</Text>}
-
-      <Controller
-        control={control}
-        name="password"
-        render={({ field: { onChange, onBlur, value } }) => (
-          <TextInput
-            style={[
-              styles.input, {
-                borderWidth: errors.password && 1,
-                borderColor: errors.password && '#ff375b'
-              }
-            ]}
-            onChangeText={onChange}
-            onBlur={onBlur} //chamado quando o textinput é tocado
-            value={value}
-            placeholder="Digite sua senha"
-            secureTextEntry={true}
-          />
-        )}
-      />
-
-      {errors.password && <Text style={styles.labelError}>{errors.password?.message}</Text>}
-
-      <TouchableOpacity style={styles.button} onPress={handleSubmit(handleSingIn)}>
-        <Text style={styles.buttonText}>Acessar</Text>
-      </TouchableOpacity>
+      </ImageBackground>
     </View>
   );
 }
@@ -102,7 +23,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F0F4FF',
+    backgroundColor: '#0F4284',
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: 18
@@ -113,37 +34,28 @@ const styles = StyleSheet.create({
     color: '#121212',
     fontWeight: 'bold'
   },
-  input: {
-    width: '100%',
-    height: 40,
-    backgroundColor: '#FFFFFF',
-    padding: 15,
-    borderRadius: 15,
-    margin: 5,
-    borderWidth: 1,
-    borderColor: 'black'
-  },
   button: {
     width: '50%',
     height: 30,
-    backgroundColor: 'green',
+    backgroundColor: '#0F4284',
     textAlign: 'center',
     borderRadius: 10,
-    marginTop: 20
+    marginTop: 20,
+    bor
   },
   buttonText: {
     color: 'white',
     fontWeight: 'bold',
-    fontSize: 18,
-    padding: 2
+    fontSize: 15,
+    padding: 5
   },
-
-  labelError: {
-    alignSelf: 'flex-start',
-    color: '#ff375b',
-    marginBottom: 8,
-    paddingLeft: 15
-  }
+  imageBackground: {
+    justifyContent: 'center',
+    width: 400,
+    height: 400,
+    resizeMode: "cover",
+    alignItems: "center"
+  },
 
 });
 
