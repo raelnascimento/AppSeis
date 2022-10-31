@@ -1,4 +1,5 @@
-import { StyleSheet, Text, View, Image, ImageBackground, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground,Image, TouchableOpacity} from 'react-native';
+import MapView from 'react-native-maps';
 
 export default function App() {
 
@@ -26,7 +27,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#0F4284',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: 18
+    paddingHorizontal: 18,
+    width: 360,
+    height: 740,
+    padding: 0,
+    margin: 0
   },
   title: {
     fontSize: 34,
@@ -41,21 +46,25 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     borderRadius: 10,
     marginTop: 20,
-    bor
+
+
   },
   buttonText: {
     color: 'white',
     fontWeight: 'bold',
     fontSize: 15,
-    padding: 5
+    padding: 5,
+
   },
   imageBackground: {
     justifyContent: 'center',
-    width: 400,
-    height: 400,
+    width: 360,
+    height: "100%",
     resizeMode: "cover",
-    alignItems: "center"
+    alignItems: "center",
+    opacity:"78%"
   },
+
 
 });
 

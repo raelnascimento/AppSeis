@@ -12,3 +12,10 @@ web-build/
 
 # macOS
 .DS_Store
+
+# npm install react react-dom
+# npm instal 
+# npm i -g expo-cli
+# npm install react-hook-form
+# npx expo install react-native-maps
+# npm install @react-navigation/native @react-navigation/native-stack
