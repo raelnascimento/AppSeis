@@ -3,17 +3,18 @@ import React from 'react';
 
 
 
-export default function Home() {
+export default function Home({navigation}) {
 
   return (
       <ImageBackground source={{ uri: 'https://images.pexels.com/photos/5025517/pexels-photo-5025517.jpeg?auto=compress&cs=tinysrgb&w=1600' }} style={styles.imageBackground}>
 
 
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Login')}>
           <Text style={styles.buttonText}> LOGIN </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Cadastro')}>
+        
           <Text style={styles.buttonText}> CADASTRO </Text>
         </TouchableOpacity>
 

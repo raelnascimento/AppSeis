@@ -12,7 +12,7 @@ const schema = yup.object({
 })
 
 
-export default function Cadastro() {
+export default function Login( {navigation}) {
   const { control, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema)
   })
