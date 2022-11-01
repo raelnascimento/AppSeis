@@ -1,70 +1,56 @@
-import { StyleSheet, Text, View, ImageBackground,Image, TouchableOpacity} from 'react-native';
-import MapView from 'react-native-maps';
+import * as React from 'react';
+import { View, Text, Button, Image } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
-export default function App() {
 
+
+
+import Cadastro  from './src/pages/Cadastro';
+import Home  from './src/pages/Home';
+
+
+
+function Feed({ navigation }) {
   return (
-    <View style={styles.container}>
-      <ImageBackground source={{ uri: 'https://images.pexels.com/photos/5025517/pexels-photo-5025517.jpeg?auto=compress&cs=tinysrgb&w=1600' }} style={styles.imageBackground}>
 
 
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}> LOGIN </Text>
-        </TouchableOpacity>
+    <View style={{ flex: 1, color: 'white', alignItems: 'center', justifyContent: 'center', backgroundColor: 'black' }}>
 
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}> CADASTRO </Text>
-        </TouchableOpacity>
 
-      </ImageBackground>
+      <View style={{
+        backgroundColor: "white", width: 100,
+        height: 40, borderRadius:20, top:-55,
+      }} >
+        <Button
+          title="Entrar"
+          onPress={() => navigation.navigate('Home')}
+        />
+      </View>
+
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#0F4284',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingHorizontal: 18,
-    width: 360,
-    height: 740,
-    padding: 0,
-    margin: 0
-  },
-  title: {
-    fontSize: 34,
-    marginBottom: 34,
-    color: '#121212',
-    fontWeight: 'bold'
-  },
-  button: {
-    width: '50%',
-    height: 30,
-    backgroundColor: '#0F4284',
-    textAlign: 'center',
-    borderRadius: 10,
-    marginTop: 20,
+const Drawer = createDrawerNavigator();
+
+function MyDrawer() {
+  return(
+    <Drawer.Navigator useLegacyImplementation> 
+      <Drawer.Screen name="Feed" component={Feed} />
+      <Drawer.Screen name="Home" component={Home} />
+      <Drawer.Screen name="Cadastro" component={Cadastro} />
+    </Drawer.Navigator>
+  );
+}
 
 
-  },
-  buttonText: {
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: 15,
-    padding: 5,
+export default function App() {
+  return (
+    <NavigationContainer>
 
-  },
-  imageBackground: {
-    justifyContent: 'center',
-    width: 360,
-    height: "100%",
-    resizeMode: "cover",
-    alignItems: "center",
-    opacity:"78%"
-  },
+      <MyDrawer/>
 
-
-});
-
+    </NavigationContainer>
+  );
+}

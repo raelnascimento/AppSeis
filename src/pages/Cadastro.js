@@ -12,7 +12,7 @@ const schema = yup.object({
 })
 
 
-export default function App() {
+export default function Cadastro() {
   const { control, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema)
   })
