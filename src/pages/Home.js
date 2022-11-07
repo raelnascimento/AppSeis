@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, ImageBackground, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View, ImageBackground, TouchableOpacity, Image} from 'react-native';
 import React from 'react';
 
 
@@ -8,6 +8,10 @@ export default function Home({navigation}) {
   return (
       <ImageBackground source={{ uri: 'https://images.pexels.com/photos/5025517/pexels-photo-5025517.jpeg?auto=compress&cs=tinysrgb&w=1600' }} style={styles.imageBackground}>
 
+      <Image
+        style={styles}
+        source={require('@expo/snack-static/react-native-logo.png')}
+      />
 
         <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Login')}>
           <Text style={styles.buttonText}> LOGIN </Text>

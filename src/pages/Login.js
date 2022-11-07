@@ -12,15 +12,15 @@ const schema = yup.object({
 })
 
 
-export default function Login( {navigation}) {
+export default function Login({navigation}) {
   const { control, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema)
   })
 
   function handleSingIn(data) {
-    console.log(data)
+    console.log(data);
+    navigation.navigate('Home')
   }
-
 
 
   return (
